@@ -38,7 +38,7 @@ const Header = ({ disappearHeader }: Props) => {
             </Link>
           </li>
           <li>
-            <Link to="/signin" onClick={goToTop}>
+            <Link to="/sign-in" onClick={goToTop}>
               Admin
             </Link>
           </li>

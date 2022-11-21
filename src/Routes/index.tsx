@@ -6,6 +6,7 @@ import Home from "../Pages/Home";
 import Product from "../Pages/Products";
 import SignInSide from "../Pages/SystemAdmin/Login/Signin";
 import Private from "../Pages/SystemAdmin/Private";
+import SecurityRoutes from "../Security/SecurityRoutes";
 
 const RoutesApp = () => {
   return (
@@ -42,8 +43,8 @@ const RoutesApp = () => {
           </Template>
         }
       />
-      <Route path="/signin" element={<SignInSide />} />
-      <Route path="/private" element={<Private />} />
+      <Route path="/sign-in" element={<SignInSide />} />
+      <Route path="/private" element={<SecurityRoutes><Private /></SecurityRoutes>} />
     </Routes>
   );
 };

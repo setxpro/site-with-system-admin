@@ -1,6 +1,7 @@
 import RoutesApp from "./Routes";
 import Screens from "./Screens";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [getI, setGetI] = useState(false);
@@ -8,6 +9,7 @@ function App() {
     <div>
       <RoutesApp />
       {getI && <Screens />}
+      <ToastContainer/>
     </div>
   );
 }

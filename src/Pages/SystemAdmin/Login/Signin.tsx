@@ -14,6 +14,8 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
+import { AuthContext } from '../../../Contexts/Auth/AuthContext'
+
 function Copyright(props: any) {
   return (
     <Typography
@@ -36,15 +38,19 @@ const theme = createTheme();
 
 export default function SignInSide() {
   const navigate = useNavigate();
+  const { signIn } = React.useContext(AuthContext)
+
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    
+    if (email && password)  {
+      signIn(email, password);
+      navigate("/private");
+    }
 
-    navigate("/private");
   };
 
   return (
@@ -98,6 +104,8 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                value={email}
+                onChange={e => setEmail(e.target.value)}
               />
               <TextField
                 margin="normal"
@@ -108,6 +116,8 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}

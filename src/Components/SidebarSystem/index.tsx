@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Contexts/Auth/AuthContext";
 
 import * as C from "./styles";
 
 const SidebarSystem: React.FC = () => {
+
+  const { signOut } = useContext(AuthContext);
+
   return (
     <C.Container>
       <div className="logo-area">SUA LOGO</div>
@@ -23,6 +27,9 @@ const SidebarSystem: React.FC = () => {
 
           <Link to="">
             <li>Pedidos</li>
+          </Link>
+          <Link to="" onClick={signOut}>
+            <li>Logout</li>
           </Link>
         </ul>
       </nav>
